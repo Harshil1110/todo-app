@@ -5,6 +5,7 @@ require("dotenv").config();
 const PORT = process.env.PORT || 3000;
 const cors = require("cors");
 const todo = require("./routes/ToDo");
+const user = require("./routes/User");
 app.use(expres.json());
 app.use(
   cors({
@@ -13,6 +14,7 @@ app.use(
   })
 );
 app.use("/todo", todo);
+app.use("/user", user);
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
