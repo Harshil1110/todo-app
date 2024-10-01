@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { RxCross1 } from "react-icons/rx";
 import { useForm } from "react-hook-form";
 const baseURL = "http://localhost:5000/todo";
-
+const token = localStorage.getItem("token");
 const PopUp = ({ setShowPopup, popupContent, setUpdateUI }) => {
   const {
     register,
@@ -18,7 +18,11 @@ const PopUp = ({ setShowPopup, popupContent, setUpdateUI }) => {
 
   const updateToDo = (data) => {
     axios
-      .put(`${baseURL}/update/${popupContent.id}`, { todo: data.todo })
+      .put(
+        `${baseURL}/update/${popupContent.id}`,
+        { todo: data.todo },
+        { headers: { Authorization: token } }
+      )
       .then((res) => {
         console.log(res.data);
         setUpdateUI((prevState) => !prevState);

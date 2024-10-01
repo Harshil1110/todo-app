@@ -14,9 +14,11 @@ const Login = ({ setUser }) => {
     axios
       .post(`${baseURL}/login`, data)
       .then((res) => {
+        // console.log(res.data);
+        localStorage.setItem("token", res.data.token);
         // setUser(res.data.user);
         // // Redirect or update UI as needed
-        alert("login successfully");
+        alert(res.data.message);
       })
       .catch((err) => {
         console.error(err);

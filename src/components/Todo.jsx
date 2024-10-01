@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { AiFillEdit } from "react-icons/ai";
 import { RxCross1 } from "react-icons/rx";
 const baseURL = "http://localhost:5000/todo";
+const token = localStorage.getItem("token");
 
 const Todo = ({
   text,
@@ -14,10 +15,12 @@ const Todo = ({
 }) => {
   const [isChecked, setIsChecked] = useState(completed);
   const deleteTodo = () => {
-    axios.delete(`${baseURL}/delete/${id}`).then((res) => {
-      console.log(res.data);
-      setUpdateUI((prevState) => !prevState);
-    });
+    axios
+      .delete(`${baseURL}/delete/${id}`, { headers: { Authorization: token } })
+      .then((res) => {
+        console.log(res.data);
+        setUpdateUI((prevState) => !prevState);
+      });
   };
 
   const updateToDo = () => {
@@ -27,7 +30,11 @@ const Todo = ({
   const toggleComplete = () => {
     setIsChecked((prev) => !prev);
     axios
-      .put(`${baseURL}/update/${id}`, { completed: !isChecked })
+      .put(
+        `${baseURL}/update/${id}`,
+        { completed: !isChecked },
+        { headers: { Authorization: token } }
+      )
       .then((res) => {
         console.log(res.data);
         setUpdateUI((prevState) => !prevState);
