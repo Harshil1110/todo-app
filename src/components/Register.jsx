@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 const baseURL = "http://localhost:5000/user";
 
 const Register = () => {
@@ -9,14 +10,12 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  const navigate = useNavigate();
   const onSubmit = (data) => {
     axios
       .post(`${baseURL}/register`, data)
       .then((res) => {
-        // setUser(res.data.user); // Set user data to parent component
-        // // Redirect or update UI as needed
-        alert("register successfully");
+        navigate("/login");
       })
       .catch((err) => {
         console.error(err);
@@ -43,6 +42,9 @@ const Register = () => {
 
         <button type="submit">SignUp</button>
       </form>
+      <p style={{ textAlign: "center", marginTop: "10px" }}>
+        Already have an account? <Link to="/login">Click Here</Link>
+      </p>
     </div>
   );
 };

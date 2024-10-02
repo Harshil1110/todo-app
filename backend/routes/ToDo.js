@@ -52,10 +52,6 @@ router.put("/update/:id", authenticateToken, async (req, res) => {
   //   console.log(todo);
 
   try {
-    // const existingTodo = await TODO.findOne({ _id: id, userId: req.user.id });
-    // if (!existingTodo) {
-    //   return res.status(404).json({ message: "Todo not found" });
-    // }
     TODO.findByIdAndUpdate(
       id,
       { userId: req.user.id, todo, completed },

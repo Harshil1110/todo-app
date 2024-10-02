@@ -12,6 +12,7 @@ body {
 .container {
   margin: 0 auto;
   max-width: fit-content;
+  position: relative;;
 }
 
 .title {
@@ -144,4 +145,11 @@ button:hover {
 }
 input[type="checkbox"] {
   cursor: pointer;
+}
+.logout{
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: red;
 }

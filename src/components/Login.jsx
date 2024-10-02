@@ -1,24 +1,24 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 const baseURL = "http://localhost:5000/user";
 
-const Login = ({ setUser }) => {
+const Login = ({ setIsAuthenticated }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  const navigate = useNavigate();
   const onSubmit = (data) => {
     axios
       .post(`${baseURL}/login`, data)
       .then((res) => {
         // console.log(res.data);
         localStorage.setItem("token", res.data.token);
-        // setUser(res.data.user);
-        // // Redirect or update UI as needed
-        alert(res.data.message);
+        setIsAuthenticated(true);
+        navigate("/todos");
       })
       .catch((err) => {
         console.error(err);
@@ -46,6 +46,9 @@ const Login = ({ setUser }) => {
 
         <button type="submit">Login</button>
       </form>
+      <p style={{ textAlign: "center", marginTop: "10px" }}>
+        Don't have an account? <Link to="/register">Click Here</Link>
+      </p>
     </div>
   );
 };
