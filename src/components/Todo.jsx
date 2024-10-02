@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { AiFillEdit } from "react-icons/ai";
 import { RxCross1 } from "react-icons/rx";
-const baseURL = "https://todo-app-1h6x.onrender.com";
+const baseURL = "https://todo-app-1h6x.onrender.com/todo";
 const token = localStorage.getItem("token");
 
 const Todo = ({
