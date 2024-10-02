@@ -12,7 +12,7 @@ import PopUp from "./components/PopUp";
 import Login from "./components/Login";
 import Register from "./components/Register";
 
-const baseURL = "http://localhost:5000";
+const baseURL = "https://todo-app-1h6x.onrender.com";
 
 const App = () => {
   const [toDos, setToDos] = useState([]);

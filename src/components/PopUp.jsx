@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { RxCross1 } from "react-icons/rx";
 import { useForm } from "react-hook-form";
-const baseURL = "http://localhost:5000/todo";
+const baseURL = "https://todo-app-1h6x.onrender.com";
 const token = localStorage.getItem("token");
 const PopUp = ({ setShowPopup, popupContent, setUpdateUI }) => {
   const {

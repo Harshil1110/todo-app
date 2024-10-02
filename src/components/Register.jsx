@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-const baseURL = "http://localhost:5000/user";
+const baseURL = "https://todo-app-1h6x.onrender.com";
 
 const Register = () => {
   const {
